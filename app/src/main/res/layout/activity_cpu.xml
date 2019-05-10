@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+
+<!--仅用于命名content，具体的内容是要在后面动态进行添加的-->
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <!--参考代码-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <!--android:background="@drawable/tab_bg"-->
+
+
+        <RelativeLayout
+            android:id="@+id/cu_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/cu_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/cu_unselected" />
+
+                <TextView
+                    android:id="@+id/cu_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="控制器"
+                    android:textColor="#82858b" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/regi_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/regi_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/regi_unselected" />
+
+                <TextView
+                    android:id="@+id/regi_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="寄存器"
+                    android:textColor="#82858b" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/calc_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/calc_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/calc_unselected" />
+
+                <TextView
+                    android:id="@+id/calc_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="运算器"
+                    android:textColor="#82858b" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+<!--CPU不存在通关代码，暂时注释掉-->
+    <!--<Button-->
+        <!--android:id="@+id/cpuClear"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:text="通关！"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.9" />-->
+</LinearLayout>

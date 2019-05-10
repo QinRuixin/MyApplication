@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MapActivity"
+    tools:showIn="@layout/activity_map">
+
+    <Button
+        android:id="@+id/keyboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:text="键盘"
+        app:layout_constraintEnd_toEndOf="@+id/printer"
+        app:layout_constraintStart_toStartOf="@+id/CPU"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:text="存储器"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <Button
+        android:id="@+id/printer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginBottom="67dp"
+        android:text="显示器"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/CPU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:text="中央处理器"
+        app:layout_constraintBaseline_toBaselineOf="@+id/memory"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/returnToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="17dp"
+        android:text="返回"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</android.support.constraint.ConstraintLayout>
