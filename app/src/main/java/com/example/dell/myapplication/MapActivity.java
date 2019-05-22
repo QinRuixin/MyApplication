@@ -12,6 +12,9 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.jrummyapps.android.animations.Rebound;
+import com.jrummyapps.android.animations.Technique;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,9 +61,23 @@ public class MapActivity extends AppCompatActivity {
         Button printer = (Button) findViewById(R.id.printer);
         Button returnMain = (Button)findViewById(R.id.returnToMain);
 
+        //导入开源库后的测试
+//        cpu.setOnTouchListener(new Rebound.SpringyTouchListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Technique.BOUNCE.playOn(v);
+//                Toast.makeText(MapActivity.this,"hhh",Toast.LENGTH_LONG).show();
+//                Technique.FADE_IN.getComposer().duration(2500).delay(1000).playOn(v);
+//            }
+//        });
+
+
+
         cpu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Technique.BOUNCE.playOn(v);
                 Intent intent0 = new Intent(MapActivity.this,CPU.class);
                 startActivityForResult(intent0,0);
             }
