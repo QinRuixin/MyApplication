@@ -39,7 +39,7 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("drop table if exists Pass");
         db.execSQL("drop table if exists Words");
         onCreate(db);
-        Toast.makeText(mContext, "更新记录进度", Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext, "更新表", Toast.LENGTH_LONG).show();
 
     }
 }

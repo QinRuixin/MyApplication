@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.dell.myapplication.LitePal.Pass;
+
 public class Keyboard extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,11 @@ public class Keyboard extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //直接对返回的值操作？
+//                Pass pass = new Pass();
+//                pass.setPassed(true);
+//                pass.updateAll("name = ?","Keyboard");
+
                 Intent intent = new Intent();
                 intent.putExtra("data_return1", true);
                 setResult(RESULT_OK,intent);
