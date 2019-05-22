@@ -10,15 +10,11 @@ import android.widget.Toast;
 import com.example.dell.myapplication.SQLiteDatabase.MydatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
-    private MydatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //创建数据库Helper
-        dbHelper = new MydatabaseHelper(this,"PassStore.db",null,1);
 
         Button exit = (Button) findViewById(R.id.exit);
         exit.setOnClickListener(new View.OnClickListener() {
@@ -40,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //加入创建数据库过程
-                dbHelper.getWritableDatabase();
-                //
                 Intent intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
             }

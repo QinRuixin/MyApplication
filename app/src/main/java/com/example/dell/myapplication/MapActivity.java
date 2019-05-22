@@ -12,6 +12,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.dell.myapplication.SQLiteDatabase.MydatabaseHelper;
 import com.jrummyapps.android.animations.Rebound;
 import com.jrummyapps.android.animations.Technique;
 
@@ -19,7 +20,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
-
+    //加入数据库版本
+    private MydatabaseHelper dbHelper;
     /*正式版需用文件存储这些数据，在该版本中回到主菜单后下面四个数据会重置*/
     private  boolean part0IsClear;
     private  boolean part1IsClear;
@@ -54,6 +56,11 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        //创建数据库Helper
+        dbHelper = new MydatabaseHelper(this,"PassStore.db",null,4);
+        //加入创建数据库过程
+        dbHelper.getWritableDatabase();
 
         Button cpu = (Button) findViewById(R.id.CPU);
         Button keyboard = (Button) findViewById(R.id.keyboard);

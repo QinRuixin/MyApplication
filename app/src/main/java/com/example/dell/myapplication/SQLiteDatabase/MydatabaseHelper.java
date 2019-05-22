@@ -7,10 +7,18 @@ import android.widget.Toast;
 
 public class MydatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String CREATE_PASS = "create table Pass(" +
+    private static final String CREATE_PASS =
+            "create table Pass(" +
             "id integer primary key autoincrement," +
             "name text," +
             "pass integer)";
+
+
+    private static final String CREATE_WORDS =
+            "create table Words(" +
+            "id integer primary key autoincrement," +
+            "name text," +
+            "words text)";
 
     private Context mContext;
 
@@ -22,11 +30,16 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PASS);
-        Toast.makeText(mContext, "Create succeeded", Toast.LENGTH_LONG).show();
+        db.execSQL(CREATE_WORDS);
+        Toast.makeText(mContext, "开始记录进度", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists Pass");
+        db.execSQL("drop table if exists Words");
+        onCreate(db);
+        Toast.makeText(mContext, "更新记录进度", Toast.LENGTH_LONG).show();
 
     }
 }
