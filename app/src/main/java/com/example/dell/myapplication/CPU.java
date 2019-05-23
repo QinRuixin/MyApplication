@@ -1,11 +1,17 @@
 package com.example.dell.myapplication;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +19,11 @@ import android.widget.TextView;
 import com.example.dell.myapplication.CPUfragments.CUFragment;
 import com.example.dell.myapplication.CPUfragments.CalcFragment;
 import com.example.dell.myapplication.CPUfragments.RegiFragment;
+import com.example.dell.myapplication.RecyclerView.LevelAdapter;
+import com.example.dell.myapplication.RecyclerView.LevelToPass;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 三个碎片嵌入此活动
@@ -48,34 +59,27 @@ public class CPU extends AppCompatActivity implements View.OnClickListener {
      */
     private FragmentManager fragmentManager;
 
+
+
 //    public CPU() {
 //    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_cpu);
-        // 初始化布局元素
+         //初始化布局元素
         initViews();
         fragmentManager = getSupportFragmentManager();
-        // 第一次启动时选中第0个tab
+         //第一次启动时选中第0个tab
         setTabSelection(0);
 
-
-//        Button clear = (Button) findViewById(R.id.cpuClear);
-//        clear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.putExtra("data_return0", true);
-//                setResult(RESULT_OK,intent);
-//                finish();
-//            }
-//        });
-
-
     }
+
+
 
     private void initViews() {
         cuLayout = findViewById(R.id.cu_layout);
