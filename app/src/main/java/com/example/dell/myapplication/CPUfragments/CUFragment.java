@@ -17,7 +17,6 @@ import com.example.dell.myapplication.RecyclerView.LevelToPass;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CUFragment extends Fragment {
     //用于设置fragment的layout
     private View cuLayout;
@@ -26,12 +25,10 @@ public class CUFragment extends Fragment {
     //用于添加关卡
     private List<LevelToPass> levelList = new ArrayList<>();
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         cuLayout = inflater.inflate(R.layout.fragement_controlunit, container, false);
-
 //        加载一个RecylerView
 
 //        先初始化CU关卡数据
@@ -53,7 +50,7 @@ public class CUFragment extends Fragment {
     private void initCULevels() {
         //待修改为正常关卡添加
         for (int i = 0; i < 3; i++) {
-            LevelToPass ltp = new LevelToPass("关卡一", R.drawable.cu_selected);
+            LevelToPass ltp = new LevelToPass("关卡1-"+i, R.drawable.one);
             levelList.add(ltp);
         }
     }
