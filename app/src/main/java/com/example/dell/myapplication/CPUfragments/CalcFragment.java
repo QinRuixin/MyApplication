@@ -46,7 +46,7 @@ public class CalcFragment extends Fragment {
         recyclerView = calcLayout.findViewById(R.id.recycler_view_calculator);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-        levelAdapter = new LevelAdapter(levelList);
+        levelAdapter = new LevelAdapter(levelList,this.getActivity());//修改过
         recyclerView.setAdapter(levelAdapter);
     }
 
@@ -57,4 +57,10 @@ public class CalcFragment extends Fragment {
             levelList.add(ltp);
         }
     }
+
+
+
+
+
+
 }
