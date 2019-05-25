@@ -43,7 +43,7 @@ public class RegiFragment extends Fragment {
         recyclerView = regiLayout.findViewById(R.id.recycler_view_register);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-        levelAdapter = new LevelAdapter(levelList);
+        levelAdapter = new LevelAdapter(levelList,this);
         recyclerView.setAdapter(levelAdapter);
     }
 

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.example.dell.myapplication.CPUfragments.CUFragment;
 import com.example.dell.myapplication.CPUfragments.CalcFragment;
 import com.example.dell.myapplication.CU_Calculator_fragments.Binary_Calculator;
 import com.example.dell.myapplication.CU_Calculator_fragments.Binary_To_Decimal;
@@ -29,14 +30,16 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
 
     private List<LevelToPass> levelList;
     private Context context;
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    private Fragment infragment;
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
         //添加事件监听
         View levelView;
 
         ImageView levelImage;
         TextView levelName;
 
-        ViewHolder(View view){
+        ViewHolder(View view) {
             super(view);
             //添加事件监听
             levelView = view;
@@ -46,10 +49,10 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
         }
     }
 
-    public LevelAdapter(List<LevelToPass> levelList,Context context){
+    public LevelAdapter(List<LevelToPass> levelList, Fragment fragment) {
 
         this.levelList = levelList;
-        this.context = context;
+        this.infragment = fragment;
     }
 
     //每个Item inflater生成一个View，返回的是一个ViewHolder
@@ -57,7 +60,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.level_item,viewGroup,false);
+                .inflate(R.layout.level_item, viewGroup, false);
         final ViewHolder holder = new ViewHolder(view);
         //添加事件监听
         holder.levelView.setOnClickListener(new View.OnClickListener() {
@@ -66,36 +69,63 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
                 int position = holder.getAdapterPosition();
                 LevelToPass ltp = levelList.get(position);
                 //待修改为弹出相应的fragment
-                Toast.makeText(v.getContext(),"you clicked on view"+ltp.getName(),Toast.LENGTH_LONG).show();
-
-                //待添加关卡信息至数据库
+                FragmentManager fm = infragment.getFragmentManager();
+                if (ltp.getImageID() == R.drawable.three) {
+                    Toast.makeText(v.getContext(), "you clicked on image" + ltp.getName(), Toast.LENGTH_LONG).show();
+                    switch (ltp.getName()) {
+                        case "关卡3-0": {
+                            addFragment(new Binary_Calculator(), fm);
+                            break;
+                        }
+                        case "关卡3-1": {
+                            addFragment(new Binary_To_Decimal(), fm);
+                            break;
+                        }
+                        case "关卡3-2": {
+                            addFragment(new Floating_Number_And_ASCII(), fm);
+                            break;
+                        }
+                    }
+                }
             }
+            //Toast.makeText(v.getContext(),"you clicked on view"+ltp.getName(),Toast.LENGTH_LONG).show();
+
+            //待添加关卡信息至数据库
+
         });
+
 
         holder.levelImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentManager fm = infragment.getChildFragmentManager();
                 int position = holder.getAdapterPosition();
                 LevelToPass ltp = levelList.get(position);
                 //待修改为弹出相应的fragment
-                Toast.makeText(v.getContext(),"you clicked on image"+ltp.getName(),Toast.LENGTH_LONG).show();
-                if(ltp.getImageID()==R.drawable.three){
-                    switch(ltp.getName()){
-                        case "关卡3-0":{
-                            addFragment(new Binary_To_Decimal());
+                //Toast.makeText(v.getContext(),"you clicked on image"+ltp.getName(),Toast.LENGTH_LONG).show();
+                if (ltp.getImageID() == R.drawable.three) {
+                    if (ltp.getName().equals("关卡3-0")) {
+                        addFragment(new Binary_Calculator(), fm);
+                    }
+                    Toast.makeText(v.getContext(), "you clicked on image" + ltp.getName(), Toast.LENGTH_LONG).show();
+                    switch (ltp.getName()) {
+                        case "关卡3-0": {
+                            addFragment(new Binary_Calculator(), fm);
+                            break;
                         }
-                        case "关卡3-1":{
-                            addFragment(new Binary_Calculator());
+                        case "关卡3-1": {
+                            addFragment(new Binary_To_Decimal(), fm);
+                            break;
                         }
-                        case"关卡3-2":{
-                            addFragment(new Floating_Number_And_ASCII());
+                        case "关卡3-2": {
+                            addFragment(new Floating_Number_And_ASCII(), fm);
+                            break;
                         }
                     }
                 }
                 //待添加关卡信息至数据库
             }
         });
-
 
 
         return holder;
@@ -117,12 +147,16 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     }
 
 
-    private void addFragment(Fragment fragment){
+    private void addFragment(Fragment fragment, FragmentManager fm) {
+
         FragmentManager fragmentManager;
-        fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
+        fragmentManager = fm;
         // 开启一个Fragment事务
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.content,fragment);//不知道这个是不是R.ID.CONTENT
+        transaction.add(R.id.content, fragment);
+        transaction.show(fragment);
+        //隐藏recyclerview
+        CalcFragment.setVisibilityOfRecyclerView(false);
         transaction.commit();
     }
 }

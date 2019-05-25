@@ -17,10 +17,14 @@ import com.example.dell.myapplication.RecyclerView.LevelToPass;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 public class CUFragment extends Fragment {
     //用于设置fragment的layout
     private View cuLayout;
     public RecyclerView recyclerView;
+
     private LevelAdapter levelAdapter;
     //用于添加关卡
     private List<LevelToPass> levelList = new ArrayList<>();
@@ -43,7 +47,9 @@ public class CUFragment extends Fragment {
         recyclerView = cuLayout.findViewById(R.id.recycler_view_control);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
-        levelAdapter = new LevelAdapter(levelList);
+
+        levelAdapter = new LevelAdapter(levelList,this);
+
         recyclerView.setAdapter(levelAdapter);
     }
 
